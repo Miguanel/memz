@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>centrumemowe: {{title}}</title>
+    <!--    Szukasz tu czegoś ciekawego?     -->
+    <!--     Czy czegoś konkretnego?         -->
+
+</head>
+<body>
+<!--skrypty-->
+<style>
+    /* Set height of body and the document to 100% to enable "full page tabs" */
+body, html {
+  height: 100%;
+  margin: 0px;
+  font-family: Arial;
+  background-color:blue;
+}
+
+
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+
+#navbar.tablink {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+/* pages */
+sticky.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+
+sticky.tablink:hover {
+  background-color: #777;
+}
+
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  background-color: black;
+  padding: 100px 20px;
+  height: 100%;
+  margin-top: 5px;
+}
+
+
+.mems {
+    color: white;
+    background-color: black;
+    margin: 25px, 2px;
+    margin-top:  8px;
+}
+
+
+.tyt {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+
+
+#Jbzd {
+    background-color: red;
+}
+
+
+#Jm {
+    background-color: green;
+}
+
+
+#Demo {
+    background-color: brown;
+}
+
+
+#Kwjk {
+    background-color: orange;
+}
+
+#Redmik {
+    background-color: brown;
+}
+
+#Atom {
+    background-color: #6eff82;
+
+}
+
+#Hard {
+    background-color: orange;
+}
+
+.lista {
+    margin-top:25px;
+}
+
+#nav {
+    z-index: 99999;
+}
+
+
+</style>
+
+<!--<script src="http://gestalt.ironpython.net/dlr-latest.js" type="text/javascript"></script>-->
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!--ciauko-->
+<nav class="blocklink" id="navbar">
+
+    <button class="tablink" onclick="openPage('Jbzd', this, 'red')" id="defaultOpen">JBZD</button>
+    <button class="tablink" onclick="openPage('Jm', this, 'green')">JOE-MONSTER</button>
+    <button class="tablink" onclick="openPage('Demo', this, '#621f13')">DEMOTY</button>
+    <button class="tablink" onclick="openPage('Kwjk', this, 'yellow')">KWEJK</button>
+        <button class="tablink" onclick="openPage('Redmik', this, 'brown')">..-stand by-..</button>
+        <button class="tablink" onclick="openPage('Atom', this, '#6eff82')">..-stand by-..</button>
+
+
+</nav>
+
+
+<div id="Jbzd" class="tabcontent" style="display: contents;">
+    <div>&nbsp;</div>
+
+    <blockquote class="lista">
+        {% if jebmem.items() %}
+            {% for key, val in jebmem.items() %}
+
+                <div class="mems">
+                    <div class="tyt"> -- {{ val[0] }} --</div>
+                    <img src="{{ val[1] }}" onclick="window.open('{{val[2]}}','_blank')" tabindex="1">
+                </div>
+
+            {% endfor %}
+        {% endif %}
+
+        {% if jebvmem.items() %}
+            {% for key, val in jebvmem.items() %}
+
+                <div class="vidjo mems">
+                <div class="tyt"> -- {{ val[0] }} --</div>
+                <video margin=-2 autoplay="autoplay" loop="true" muted defaultmuted playsinline controls>
+                    <source src="{{ val[1] }}" onclick="window.open('{{val[2]}}','_blank')">
+                </video>
+            </div>
+
+            {% endfor %}
+        {% endif %}
+    </blockquote>
+</div>
+
+<div id="Jm" class="tabcontent" style="display: none;">
+    <div>
+        &nbsp;
+    </div>
+
+    {% if urljm.items() %}
+    {% for key, val in urljm.items() %}
+
+    <div class="mems">
+        <div class="tyt"> -- {{ val[0] }} --</div>
+        <img src="{{ val[1] }}" onclick="window.open('{{val[2]}}','_blank')">
+    </div>
+
+    {% endfor %}
+    {% endif %}
+</div>
+
+<div id="Demo" class="tabcontent" style="display: none;">
+    <div>
+        &nbsp;
+    </div>
+    {% if urljm.items() %}
+    {% for key, val in demomem.items() %}
+
+    <div class="mems">
+        <div class="tyt"> -- {{ val[0] }} --</div>
+        <img src="{{ val[1] }}" onclick="window.open('{{val[2]}}','_blank')">
+    </div>
+
+    {% endfor %}
+    {% endif %}
+</div>
+
+<div id="Kwjk" class="tabcontent" style="display: none;">
+    <div>&nbsp;</div>
+
+    <blockquote class="lista">
+        {% if kwmems.items() %}
+            {% for key, val in kwmems.items() %}
+
+                <div class="mems">
+                    <div class="tyt"> -- {{ val[0] }} --</div>
+                    <img src="{{ val[1] }}" onclick="window.open('{{val[2]}}','_blank')">
+                </div>
+
+            {% endfor %}
+        {% else %}
+            <div class="mems">
+                <div class="tyt"> -- nima--</div>
+                <img src="">
+            </div>
+        {% endif %}
+    </blockquote>
+</div>
+<div id="Redmik" class="tabcontent" style="display: none;">
+    <div>
+        &nbsp;
+    </div>
+    {% if kwmems.items() %}
+    {% for key, val in kwmems.items() %}
+
+    <div class="mems">
+        <div class="tyt"> -- {{ val[0] }} --</div>
+        <img src="{{ val[1] }}" onclick="window.open('{{val[2]}}','_blank')">
+    </div>
+
+    {% endfor %}
+    {% else %}
+    <div class="mems">
+        <div class="tyt"> -- nima--</div>
+        <img src="">
+    </div>
+    {% endif %}
+
+</div>
+<div id="Atom" class="tabcontent" style="display: none;">
+    <div>
+        &nbsp;
+    </div>
+    {% if kwmems.items() %}
+    {% for key, val in kwmems.items() %}
+
+    <div class="mems">
+        <div class="tyt"> -- {{ val[0] }} --</div>
+        <img src="{{ val[1] }}" onclick="window.open('{{val[2]}}','_blank')">
+    </div>
+
+    {% endfor %}
+    {% else %}
+    <div class="mems">
+        <div class="tyt"> -- nima--</div>
+        <img src="">
+    </div>
+    {% endif %}
+
+</div>
+<div id="Hard" class="tabcontent" style="display: none;">
+    <div>
+        &nbsp;
+    </div>
+    {% if kwmems.items() %}
+    {% for key, val in kwmems.items() %}
+
+    <div class="mems">
+        <div class="tyt"> -- {{ val[0] }} --</div>
+        <img src="{{ val[1] }}" onclick="window.open('{{val[2]}}','_blank')">
+    </div>
+
+    {% endfor %}
+    {% else %}
+    <div class="mems">
+        <div class="tyt"> -- nima--</div>
+        <img src="">
+    </div>
+    {% endif %}
+
+</div>
+
+
+<script type="text/javascript">
+
+document.getElementById('toggle-button').addEventListener('click', function() {
+    var sidebar = document.querySelector('.sidebar');
+    var buttonGroup = document.getElementById('button-group');
+    var showSidebarButton = document.getElementById('show-sidebar');
+
+    if (sidebar.classList.contains('hidden')) {
+        sidebar.classList.remove('hidden');
+        buttonGroup.style.display = 'flex';
+        buttonGroup.style.flexDirection = 'column'; // Ustawienie przycisków w pionie
+        showSidebarButton.style.display = 'none';
+    } else {
+        sidebar.classList.add('hidden');
+        buttonGroup.style.display = 'none';
+        showSidebarButton.style.display = 'block';
+    }
+});
+
+document.getElementById('show-sidebar').addEventListener('click', function() {
+    var sidebar = document.querySelector('.sidebar');
+    var buttonGroup = document.getElementById('button-group');
+    var showSidebarButton = document.getElementById('show-sidebar');
+
+    sidebar.classList.remove('hidden');
+    buttonGroup.style.display = 'flex';
+    buttonGroup.style.flexDirection = 'column'; // Ustawienie przycisków w pionie
+    showSidebarButton.style.display = 'none';
+});
+
+function flyNavi() {
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+    var tc = document.getElementsByClassName("tabcontent");
+
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky");
+        for (i = 0; i < tc.length; i++) {
+            tc[i].style.marginTop = "35px";
+        }
+    } else {
+        navbar.classList.remove("sticky");
+        for (i = 0; i < tc.length; i++) {
+            tc[i].style.marginTop = "10px";
+        }
+    }
+}
+
+function clickCopy(uriel) {
+  var Url = uriel;
+  Url.innerHTML = window.location.href;
+  console.log(Url.innerHTML)
+  Url.select();
+  document.execCommand("copy");
+}
+function openPage(pageName, elmnt, color) {
+    window.scrollTo(0, 0);
+    var i, tabcontent, tablinks, tabbd;
+    tabcontent = document.getElementsByClassName("tabcontent");
+
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "grey";
+    }
+
+    document.getElementById(pageName).style.display = "contents";
+
+    elmnt.style.backgroundColor = color;
+
+    tabbd = document.getElementsByTagName("html");
+    tabbd[0].style.backgroundColor = color;
+
+}
+
+
+
+
+</script>
+</body>
+</html>
